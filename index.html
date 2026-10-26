@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lumi Library — Digital Library</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📘</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="nav">
+  <div class="container nav-in">
+    <a href="#home" class="logo"><span class="logo-mark">L</span>Lumi Library</a>
+    <nav id="menu" class="menu" aria-label="Main">
+      <a href="#home">Home</a><a href="#books">Books</a><a href="#categories">Categories</a>
+      <a href="#library">My Library <span id="libCount" class="pill">0</span></a><a href="#about">About Us</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="searchBtn" aria-label="Search books">🔍</button>
+      <button class="btn btn-primary btn-sm" id="signBtn">Sign In</button>
+      <button class="icon-btn burger" id="burger" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="home" class="hero">
+  <div class="container hero-in">
+    <div>
+      <p class="label">Your digital reading space</p>
+      <h1>Discover Your Next Favorite Book</h1>
+      <p class="lead">Lumi Library brings classics, science, business and Indonesian literature into one calm place. Browse, save and organize what you want to read.</p>
+      <div class="row">
+        <a href="#books" class="btn btn-primary" id="exploreBtn">Explore Books</a>
+        <a href="#about" class="btn btn-ghost">Learn More</a>
+      </div>
+      <dl class="stats">
+        <div><dt id="stBooks">0</dt><dd>Books</dd></div>
+        <div><dt id="stCats">0</dt><dd>Categories</dd></div>
+        <div><dt>12k+</dt><dd>Readers (demo)</dd></div>
+      </dl>
+    </div>
+    <div class="shelf" id="heroShelf" aria-hidden="true"></div>
+  </div>
+</section>
+
+<section id="featured" class="section alt">
+  <div class="container">
+    <div class="head"><h2>Featured Books</h2><a href="#books" class="btn btn-ghost btn-sm" id="viewAllBtn">View All Books</a></div>
+    <div class="grid" id="featuredGrid"></div>
+  </div>
+</section>
+
+<section id="books" class="section">
+  <div class="container">
+    <div class="head"><h2>Books</h2><span class="muted" id="resultInfo"></span></div>
+    <div class="tools">
+      <input id="search" type="search" placeholder="Search title, author or category…" aria-label="Search books">
+      <select id="catFilter" aria-label="Filter by category"></select>
+      <select id="sort" aria-label="Sort books">
+        <option value="title">Sort: Title A–Z</option>
+        <option value="rating">Sort: Top rated</option>
+      </select>
+    </div>
+    <div class="grid" id="bookGrid"></div>
+    <p id="noBooks" class="empty" hidden>No books found. Try another title, author or category.</p>
+    <div class="center"><button class="btn btn-ghost" id="loadMore">Load More</button></div>
+  </div>
+</section>
+
+<section id="categories" class="section alt">
+  <div class="container">
+    <div class="head"><h2>Categories</h2></div>
+    <div class="cats" id="catGrid"></div>
+  </div>
+</section>
+
+<section id="library" class="section">
+  <div class="container">
+    <div class="head"><h2>My Library</h2>
+      <div class="tabs"><button class="tab on" data-tab="saved">Saved</button><button class="tab" data-tab="fav">Favorites</button></div>
+    </div>
+    <div class="grid" id="libGrid"></div>
+    <div id="libEmpty" class="empty-card" hidden>
+      <div class="big">📚</div>
+      <h3 id="emptyTitle">Your shelf is empty</h3>
+      <p>Open any book and choose “Add to My Library”, or tap ♡ to mark favorites.</p>
+      <a href="#books" class="btn btn-primary">Browse Books</a>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section alt">
+  <div class="container">
+    <div class="head"><h2>About Us</h2></div>
+    <div class="about">
+      <p class="lead">Lumi Library is a demo digital library built to make reading feel simple. We organize a wide collection into clear categories so readers can find a good book in seconds. Book entries show information and descriptions only; copyrighted texts are never provided.</p>
+      <div class="vm">
+        <article><div class="ic">🎯</div><h3>Vision</h3><p>A world where everyone has a quiet, organized place to discover books.</p></article>
+        <article><div class="ic">🧭</div><h3>Mission</h3><p>Curate quality titles, keep search effortless, and respect authors’ rights.</p></article>
+      </div>
+      <div class="adv">
+        <article><div class="ic">⚡</div><h3>Fast search</h3><p>Find books by title, author or category as you type.</p></article>
+        <article><div class="ic">🔖</div><h3>Personal shelf</h3><p>Save books and favorites. They stay after you refresh.</p></article>
+        <article><div class="ic">📱</div><h3>Any device</h3><p>A layout that adapts to laptop, tablet and phone.</p></article>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container foot">
+    <div><a href="#home" class="logo light"><span class="logo-mark">L</span>Lumi Library</a>
+      <p>A modern digital library for curious readers. This website is a frontend demo.</p></div>
+    <div><h4>Quick Links</h4><a href="#home">Home</a><a href="#books">Books</a><a href="#library">My Library</a><a href="#about">About Us</a></div>
+    <div><h4>Book Categories</h4><div id="footCats"></div></div>
+    <div><h4>Contact</h4><p>hello@lumilibrary.example</p><p>+62 000 0000 0000</p><p>Surakarta, Indonesia</p></div>
+  </div>
+  <p class="copy">© <span id="year"></span> Lumi Library. All rights reserved.</p>
+</footer>
+
+<!-- Book detail / reader modal -->
+<div class="modal" id="bookModal" hidden><div class="dialog" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <button class="close" data-close aria-label="Close">✕</button>
+  <div class="detail">
+    <div id="mCover"></div>
+    <div>
+      <span class="tag" id="mCat"></span>
+      <h3 id="mTitle"></h3><p class="muted" id="mAuthor"></p>
+      <p class="stars" id="mRating"></p><p id="mDesc"></p>
+      <div class="row">
+        <button class="btn btn-primary" id="mAdd">Add to My Library</button>
+        <button class="btn btn-ghost" id="mRead">Read Book</button>
+      </div>
+      <div class="reader" id="reader" hidden></div>
+    </div>
+  </div>
+</div></div>
+
+<!-- Sign in modal (demo) -->
+<div class="modal" id="signModal" hidden><div class="dialog small" role="dialog" aria-modal="true" aria-label="Sign in">
+  <button class="close" data-close aria-label="Close">✕</button>
+  <h3>Sign In</h3>
+  <p class="muted">Demo only. Real authentication needs a backend server to verify accounts and keep passwords secure.</p>
+  <div class="form">
+    <label>Email<input id="email" type="email" placeholder="you@example.com"></label>
+    <label>Password<input id="pass" type="password" placeholder="••••••••"></label>
+    <button class="btn btn-primary" id="signSubmit">Sign In</button>
+  </div>
+</div></div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+</body>
+</html>
